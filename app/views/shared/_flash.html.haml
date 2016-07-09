@@ -1,0 +1,22 @@
+- message = ""
+- flash_class = ""
+- if flash[:notice].present?
+  - message = flash[:notice]
+  - flash_class = "alert-success"
+- elsif flash[:error].present?
+  - message = flash[:error]
+  - flash_class = "alert-danger"
+  - title = "Error!"
+- elsif flash[:success].present?
+  - message = flash[:success]
+  - flash_class = "alert-success"
+  - title = "Success!"
+
+.alert.in#flash{class: flash_class}
+  %button.close{"aria-label" => "Close", "data-dismiss" => "alert", type: "button"}
+    %span{"aria-hidden" => "true"} ×
+  %h4= title
+  %p= message
+
+= content_for :scripts do
+  window.rubyonrailsstarterkit.shared.init_flash("#{message}");

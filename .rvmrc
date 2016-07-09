@@ -1,0 +1,1 @@
+rvm use 2.3.1@ruby-on-rails-starterkit --create --default

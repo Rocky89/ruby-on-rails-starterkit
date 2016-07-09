@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %title Ruby on Rails Starterkit
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body{class: "#{params[:controller].gsub("/", "-")}"}
+    = render "shared/flash"
+    = render "shared/header"
+    .container-fluid
+      = yield
+    = render "shared/footer"
+    %script{type: "text/javascript", 'data-turbolinks-eval'=>false}
+      var string = "#{(j (yield :scripts))}";
+      eval(string);
