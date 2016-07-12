@@ -39,6 +39,8 @@ gem 'devise'
 gem 'activeadmin', github: 'activeadmin'
 # Bootstrap 4 ruby gem for Ruby on Rails
 gem 'bootstrap', '~> 4.0.0.alpha3'
+# provides a clean layer between the model and the controller
+gem 'active_model_serializers'
 
 source 'https://rails-assets.org' do
   # JavaScript library for efficiently making an absolutely positioned element stay next to another element on the page
