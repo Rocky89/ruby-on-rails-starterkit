@@ -2,8 +2,9 @@ module Api::V1
   class UsersController < BaseController
 
     def index
-      render json: User.all
+      return_response do
+        User.all
+      end
     end
-
   end
 end
