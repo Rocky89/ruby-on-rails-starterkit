@@ -1,6 +1,7 @@
 module Api::V1
   class BaseController < ActionController::API
     include ActionController::Serialization
+    include CanCan::ControllerAdditions
     # Generic API stuff here
 
     rescue_from Exception do |exception|

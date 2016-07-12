@@ -45,6 +45,8 @@ gem 'active_model_serializers'
 # gem 'rack-cors'
 # protect our API from DDoS, brute force attacks, hammering, or even to monetize with paid usage limits
 gem 'rack-attack'
+# authorization library which restricts what resources a given user is allowed to access
+gem 'cancancan'
 
 source 'https://rails-assets.org' do
   # JavaScript library for efficiently making an absolutely positioned element stay next to another element on the page

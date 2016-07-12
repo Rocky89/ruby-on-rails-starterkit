@@ -1,9 +1,16 @@
 module Api::V1
   class UsersController < BaseController
+    load_and_authorize_resource
 
     def index
       return_response do
         User.all
+      end
+    end
+
+    def show
+      return_response do
+        @user
       end
     end
   end
