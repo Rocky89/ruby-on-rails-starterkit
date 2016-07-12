@@ -41,6 +41,8 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 # provides a clean layer between the model and the controller
 gem 'active_model_serializers'
+# Cross-Origin Resource Sharing in case off a public API
+# gem 'rack-cors'
 
 source 'https://rails-assets.org' do
   # JavaScript library for efficiently making an absolutely positioned element stay next to another element on the page
