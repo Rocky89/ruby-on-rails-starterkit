@@ -1,4 +1,6 @@
 Rails.application.configure do
+  ENV['TOKEN_SECRET'] = 'WFpbCI6Im5Abi5'
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

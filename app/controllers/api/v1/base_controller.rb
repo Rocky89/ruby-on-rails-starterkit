@@ -11,16 +11,15 @@ module Api::V1
     def return_response
       begin
         result, status = yield, :ok # 200
-      rescue KeyError => error
-        result, status = error.message, :bad_request # 400
-      rescue SecurityError => error
-        result, status = error.message, :unauthorized # 401
-      rescue NotFound => error
-        result, status = error.message, :not_found # 404
-      rescue InvalidData => error
-        result, status = error.message, :unprocessable_entity # 422
+      rescue Errors::BadRequest => error
+        result, status = { message: error.message }, :bad_request # 400
+      rescue Errors::Unauthorized => error
+        result, status = { message: error.message }, :unauthorized # 401
+      rescue Errors::NotFound => error
+        result, status = { message: error.message }, :not_found # 404
+      rescue Errors::UnprocessableEntity => error
+        result, status = { message: error.message }, :unprocessable_entity # 422
       end
-
       render json: result, status: status
     end
 

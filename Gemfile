@@ -47,6 +47,8 @@ gem 'active_model_serializers'
 gem 'rack-attack'
 # authorization library which restricts what resources a given user is allowed to access
 gem 'cancancan'
+# ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) 
+gem 'jwt'
 
 source 'https://rails-assets.org' do
   # JavaScript library for efficiently making an absolutely positioned element stay next to another element on the page

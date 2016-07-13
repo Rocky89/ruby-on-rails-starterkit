@@ -14,6 +14,8 @@ module RubyOnRailsStarterkit
 
     config.middleware.use Rack::Attack
 
+    config.autoload_paths << Rails.root.join('lib')
+
     # allow GET, POST or OPTIONS requests from any origin on any resource.
     # config.middleware.insert_before 0, "Rack::Cors" do
     #  allow do
