@@ -23,5 +23,8 @@ module Api::V1
       render json: result, status: status
     end
 
+    def authenticate
+      @current_user = CurrentUserService.new(request.headers['token']).authenticate
+    end
   end
 end
