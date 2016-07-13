@@ -70,6 +70,12 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener'
+  # A Ruby code quality reporter.
+  gem 'rubycritic'
+  # Ruby static code analyzer
+  gem 'rubocop'
+  # checks for security vulnerabilities
+  gem 'brakeman'
 end
 
 # Gemfile
