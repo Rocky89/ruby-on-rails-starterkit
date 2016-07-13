@@ -11,5 +11,11 @@ module Api::V1
         SignUpUserService.new(params).sign_up
       end
     end
+
+    def forgot_password
+      return_response do
+        ForgotPasswordService.new(params).forgot_password
+      end
+    end
   end
 end
