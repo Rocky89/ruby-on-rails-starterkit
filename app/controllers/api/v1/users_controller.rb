@@ -1,6 +1,6 @@
 module Api::V1
   class UsersController < BaseController
-    before_filter :authenticate
+    before_action :authenticate
     load_and_authorize_resource
 
     def index

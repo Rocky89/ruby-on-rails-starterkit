@@ -47,7 +47,7 @@ gem 'active_model_serializers'
 gem 'rack-attack'
 # authorization library which restricts what resources a given user is allowed to access
 gem 'cancancan'
-# ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) 
+# ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT)
 gem 'jwt'
 
 source 'https://rails-assets.org' do
@@ -58,6 +58,8 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  # testing framework for Rails
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -68,6 +70,14 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener'
+end
+
+# Gemfile
+group :test do
+  # cleaning your database
+  gem 'database_cleaner'
+  # a fixtures replacement with a straightforward definition syntax
+  gem 'factory_girl_rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
