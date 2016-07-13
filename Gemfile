@@ -19,7 +19,8 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+# Turbolinks makes navigating your web application faster. Read
+# more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5.x'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
@@ -43,30 +44,36 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'active_model_serializers'
 # Cross-Origin Resource Sharing in case off a public API
 # gem 'rack-cors'
-# protect our API from DDoS, brute force attacks, hammering, or even to monetize with paid usage limits
+# protect our API from DDoS, brute force attacks, hammering, or even to monetize
+# with paid usage limits
 gem 'rack-attack'
-# authorization library which restricts what resources a given user is allowed to access
+# authorization library which restricts what resources a given user is allowed
+# to access
 gem 'cancancan'
 # ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT)
 gem 'jwt'
 
 source 'https://rails-assets.org' do
-  # JavaScript library for efficiently making an absolutely positioned element stay next to another element on the page
+  # JavaScript library for efficiently making an absolutely positioned element
+  # stay next to another element on the page
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger
+  # console
   gem 'byebug', platform: :mri
   # testing framework for Rails
   gem 'rspec-rails'
 end
 
 group :development do
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  # Access an IRB console on exception pages or by using <%= console %> anywhere
+  # in the code.
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  # Spring speeds up development by keeping your application running in the
+  # background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener'

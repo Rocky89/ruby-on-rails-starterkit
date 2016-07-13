@@ -1,2 +1,4 @@
-class Errors::UnprocessableEntity < Errors::Base
+module Errors
+  class UnprocessableEntity < Errors::Base
+  end
 end

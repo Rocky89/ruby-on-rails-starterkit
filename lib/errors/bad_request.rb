@@ -1,2 +1,4 @@
-class Errors::BadRequest < Errors::Base
+module Errors
+  class BadRequest < Errors::Base
+  end
 end

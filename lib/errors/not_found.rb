@@ -1,2 +1,4 @@
-class Errors::NotFound < Errors::Base
+module Errors
+  class NotFound < Errors::Base
+  end
 end

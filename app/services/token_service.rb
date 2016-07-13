@@ -7,7 +7,7 @@ class TokenService
     begin
       JWT.decode(token, ENV['TOKEN_SECRET']).first
     rescue
-      raise Errors::Unauthorized.new("Invalid token")
+      raise Errors::Unauthorized.new('Invalid token')
     end
   end
 end

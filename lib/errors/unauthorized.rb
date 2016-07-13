@@ -1,2 +1,4 @@
-class Errors::Unauthorized < Errors::Base
+module Errors
+  class Unauthorized < Errors::Base
+  end
 end
