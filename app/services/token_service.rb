@@ -4,10 +4,8 @@ class TokenService
   end
 
   def self.decode(token)
-    begin
-      JWT.decode(token, ENV['TOKEN_SECRET']).first
-    rescue
-      raise Errors::Unauthorized.new('Invalid token')
-    end
+    JWT.decode(token, ENV['TOKEN_SECRET']).first
+  rescue
+    raise Errors::Unauthorized, 'Invalid token'
   end
 end

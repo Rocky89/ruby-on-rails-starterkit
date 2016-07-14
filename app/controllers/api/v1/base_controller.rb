@@ -7,20 +7,25 @@ module Api
 
       rescue_from Exception do |exception|
         render json: { message: exception.message },
-                status: :internal_server_error # 500
+               status: :internal_server_error # 500
       end
 
       def return_response
         begin
-          result, status = yield, :ok # 200
+          result = yield
+          status = :ok # 200
         rescue Errors::BadRequest => error
-          result, status = { message: error.message }, :bad_request # 400
+          result = { message: error.message }
+          status = :bad_request # 400
         rescue Errors::Unauthorized => error
-          result, status = { message: error.message }, :unauthorized # 401
+          result = { message: error.message }
+          status = :unauthorized # 401
         rescue Errors::NotFound => error
-          result, status = { message: error.message }, :not_found # 404
+          result = { message: error.message }
+          status = :not_found # 404
         rescue Errors::UnprocessableEntity => error
-          result, status = { message: error.message }, :unprocessable_entity # 422
+          result = { message: error.message }
+          status = :unprocessable_entity # 422
         end
         render json: result, status: status
       end

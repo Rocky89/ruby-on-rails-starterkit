@@ -8,7 +8,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   describe 'GET #index' do
     before(:all) do
       @user = create(:user)
-      @token = TokenService.encode({ email: @user.email })
+      @token = TokenService.encode(email: @user.email)
     end
     it 'Display all users' do
       request.headers['token'] = @token
@@ -24,7 +24,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
   describe 'GET #show' do
     before(:all) do
       @user = create(:user)
-      @token = TokenService.encode({ email: @user.email })
+      @token = TokenService.encode(email: @user.email)
     end
     it 'Display user' do
       request.headers['token'] = @token

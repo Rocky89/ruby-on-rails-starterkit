@@ -2,7 +2,7 @@ module Errors
   class Base < StandardError
     attr_reader :message
 
-    def initialize(message = "")
+    def initialize(message = '')
       super
       @message = message
     end
