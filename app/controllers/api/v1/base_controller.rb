@@ -14,24 +14,32 @@ module Api
         begin
           result = yield
           status = :ok # 200
-        rescue Errors::BadRequest => error
+        rescue Errors::BadRequest, Errors::Unauthorized, Errors::NotFound,
+               Errors::UnprocessableEntity => error
           result = { message: error.message }
-          status = :bad_request # 400
-        rescue Errors::Unauthorized => error
-          result = { message: error.message }
-          status = :unauthorized # 401
-        rescue Errors::NotFound => error
-          result = { message: error.message }
-          status = :not_found # 404
-        rescue Errors::UnprocessableEntity => error
-          result = { message: error.message }
-          status = :unprocessable_entity # 422
+          status = get_status_code(error.class)
+          # byebug
         end
         render json: result, status: status
       end
 
       def authenticate
-        @current_user = CurrentUserService.new(request.headers['token']).authenticate
+        @current_user =
+          CurrentUserService.new(request.headers['token']).authenticate
+      end
+
+      private
+
+      def get_status_code(type)
+        if type == Errors::BadRequest
+          :bad_request # 400
+        elsif type == Errors::Unauthorized
+          :unauthorized # 401
+        elsif type == Errors::NotFound
+          :not_found # 404
+        elsif type == Errors::UnprocessableEntity
+          :unprocessable_entity # 422
+        end
       end
     end
   end

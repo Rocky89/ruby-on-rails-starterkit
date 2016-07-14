@@ -1,0 +1,9 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'app/models/ability.rb'
+    - 'config/initializers/rack_attack.rb'
+    - 'bin/spring'
+    - 'spec/rails_helper.rb'
+Documentation:
+  Enabled: false

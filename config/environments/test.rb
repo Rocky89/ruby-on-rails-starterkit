@@ -1,6 +1,7 @@
 Rails.application.configure do
   ENV['TOKEN_SECRET'] = 'WFpbCI6Im5Abi5'
-  # Settings specified here will take precedence over those in config/application.rb.
+  # Settings specified here will take precedence over those in
+  # config/application.rb.
 
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that

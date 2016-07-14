@@ -10,13 +10,16 @@ RSpec.describe User, type: :model do
       create(:user).should be_valid
     end
     it 'invalid user - missing email' do
-      expect { create(:user, email: nil) }.to raise_error(ActiveRecord::RecordInvalid)
+      user = build(:user, email: nil)
+      expect(user.save).to eq(false)
     end
     it 'invalid user - missing password' do
-      expect { create(:user, password: nil) }.to raise_error(ActiveRecord::RecordInvalid)
+      user = build(:user, password: nil)
+      expect(user.save).to eq(false)
     end
     it 'invalid user - missing email & password' do
-      expect { create(:user, email: nil, password: nil) }.to raise_error(ActiveRecord::RecordInvalid)
+      user = build(:user, email: nil, password: nil)
+      expect(user.save).to eq(false)
     end
   end
 end
