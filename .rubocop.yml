@@ -1,9 +1,26 @@
 AllCops:
   Exclude:
     - 'db/**/*'
-    - 'app/models/ability.rb'
     - 'config/initializers/rack_attack.rb'
     - 'bin/spring'
+    - 'app/doc/api/v1/*'
     - 'spec/rails_helper.rb'
+    - 'spec/controllers/api/v1/*'
+    - 'config/environments/*'
+    - 'config/routes.rb'
+    - 'app/controllers/api/concerns/base_endpoint.rb'
+    - 'app/controllers/api/concerns/configuration.rb'
 Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/ClassLength:
+ Max: 120
+
+Metrics/ModuleLength:
+  Max: 120
+
+Style/ClassAndModuleChildren:
   Enabled: false

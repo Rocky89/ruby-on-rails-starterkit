@@ -19,16 +19,14 @@ RSpec.describe Api::V1::AuthenticationController, type: :controller do
       expect(response).to have_http_status(400)
     end
     it 'Valid parameters - create user' do
-      post :sign_up, params: { email: 'norbert@forman.com',
-                               password: '12345678' }
-      body = JSON.parse(response.body)
+      post :sign_up, params: { email: 'norbert@forman.com', password: '12345678' }
       expect(response).to have_http_status(200)
+      body = JSON.parse(response.body)
       expect(body['user'].keys).to contain_exactly('id', 'email', 'auth_token')
     end
     it 'Valid parameters - duplicate email' do
       create(:user)
-      post :sign_up, params: { email: 'norbert@forman.com',
-                               password: '12345678' }
+      post :sign_up, params: { email: 'norbert@forman.com', password: '12345678' }
       expect(response).to have_http_status(422)
     end
   end
@@ -48,10 +46,9 @@ RSpec.describe Api::V1::AuthenticationController, type: :controller do
     end
     it 'Valid parameters - user sign in' do
       create(:user)
-      post :sign_in, params: { email: 'norbert@forman.com',
-                               password: '12345678' }
-      body = JSON.parse(response.body)
+      post :sign_in, params: { email: 'norbert@forman.com', password: '12345678' }
       expect(response).to have_http_status(200)
+      body = JSON.parse(response.body)
       expect(body['user'].keys).to contain_exactly('id', 'email', 'auth_token')
     end
     it 'Valid parameters - invalid email' do

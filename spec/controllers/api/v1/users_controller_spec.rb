@@ -6,7 +6,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     DatabaseCleaner.clean
   end
   describe 'GET #index' do
-    before(:all) do
+    before(:each) do
       @user = create(:user)
       @token = TokenService.encode(email: @user.email)
     end
@@ -17,12 +17,12 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     end
     it 'Missing token from header' do
       get :index
-      expect(response).to have_http_status(500)
+      expect(response).to have_http_status(401)
     end
   end
 
   describe 'GET #show' do
-    before(:all) do
+    before(:each) do
       @user = create(:user)
       @token = TokenService.encode(email: @user.email)
     end
@@ -33,7 +33,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     end
     it 'Missing token from header' do
       get :show, params: { id: @user.id }
-      expect(response).to have_http_status(500)
+      expect(response).to have_http_status(401)
     end
   end
 end

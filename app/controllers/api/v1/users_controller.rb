@@ -1,20 +1,13 @@
 module Api
   module V1
-    class UsersController < BaseController
+    class UsersController < Api::ApiController
       before_action :authenticate
-      load_and_authorize_resource
 
-      def index
-        return_response do
-          User.all
-        end
-      end
+      include UserDoc
 
-      def show
-        return_response do
-          @user
-        end
-      end
+      json_api_methods :index, :show
+      json_api_target_class User
+      json_api_serializer UserSerializer
     end
   end
 end
