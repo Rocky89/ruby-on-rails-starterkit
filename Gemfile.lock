@@ -348,7 +348,7 @@ DEPENDENCIES
   active_model_serializers
   activeadmin!
   apipie-rails
-  bootstrap (~> 4.0.0.alpha3)
+  bootstrap (~> 4.0.0.alpha2)
   brakeman
   byebug
   cancancan

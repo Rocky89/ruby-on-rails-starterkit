@@ -39,7 +39,7 @@ gem 'devise'
 # framework for creating elegant backends for website administration
 gem 'activeadmin', github: 'activeadmin'
 # Bootstrap 4 ruby gem for Ruby on Rails
-gem 'bootstrap', '~> 4.0.0.alpha3'
+gem 'bootstrap', '~> 4.0.0.alpha2'
 # provides a clean layer between the model and the controller
 gem 'active_model_serializers'
 # Cross-Origin Resource Sharing in case off a public API
