@@ -1,0 +1,403 @@
+{
+  "authentication#forgot_password": [
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/forgot_password",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "test@test.com"
+      },
+      "response_data": {
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/forgot_password",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+      },
+      "response_data": {
+        "message": "Email parameter is missing"
+      },
+      "code": "400",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/forgot_password",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "e@c.com"
+      },
+      "response_data": {
+        "message": "e@c.com not found"
+      },
+      "code": "404",
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "authentication#sign_in": [
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "test@test.com",
+        "password": "12345678"
+      },
+      "response_data": {
+        "user": {
+          "id": 1,
+          "email": "test@test.com",
+          "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RAdGVzdC5jb20ifQ.sy_H5_GKTTRHxlss3h6cgtm5jIU76l1A_eLccKvcvxs",
+          "has_notifications": true
+        }
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+      },
+      "response_data": {
+        "message": "Email parameter is missing"
+      },
+      "code": "400",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+        "password": "12345678"
+      },
+      "response_data": {
+        "message": "Email parameter is missing"
+      },
+      "code": "400",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "tester@test.com"
+      },
+      "response_data": {
+        "message": "Password parameter is missing"
+      },
+      "code": "400",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "e@c.com",
+        "password": "12345678"
+      },
+      "response_data": {
+        "message": "e@c.com not found"
+      },
+      "code": "404",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_in",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "test@test.com",
+        "password": "123"
+      },
+      "response_data": {
+        "message": "Invalid credentials"
+      },
+      "code": "422",
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "authentication#sign_up": [
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_up",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "tester@test.com",
+        "password": "12345678"
+      },
+      "response_data": {
+        "user": {
+          "id": 1,
+          "email": "tester@test.com",
+          "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3RlckB0ZXN0LmNvbSJ9.wiZy2CQsm2eR8cjXyoAjcO-lK9bL53Qj0c9f-5nXpnI",
+          "has_notifications": true
+        }
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_up",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+      },
+      "response_data": {
+        "message": "Email parameter is missing"
+      },
+      "code": "400",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_up",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+        "password": "12345678"
+      },
+      "response_data": {
+        "message": "Email parameter is missing"
+      },
+      "code": "400",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_up",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "tester@test.com"
+      },
+      "response_data": {
+        "message": "Password parameter is missing"
+      },
+      "code": "400",
+      "show_in_doc": 0,
+      "recorded": true
+    },
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/sign_up",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "test@test.com",
+        "password": "12345678"
+      },
+      "response_data": {
+        "message": "Email has already been taken"
+      },
+      "code": "422",
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "users#index": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/users",
+      "versions": [
+        "1"
+      ],
+      "query": "",
+      "request_data": null,
+      "response_data": {
+        "users": [
+          {
+            "id": 1,
+            "email": "test@test.com"
+          }
+        ]
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/users",
+      "versions": [
+        "1"
+      ],
+      "query": "",
+      "request_data": null,
+      "response_data": {
+        "message": "Token is missing from header"
+      },
+      "code": "401",
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "users#notifications": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/notifications",
+      "versions": [
+        "1"
+      ],
+      "query": "",
+      "request_data": null,
+      "response_data": {
+        "notifications": [
+          {
+            "id": 1,
+            "notification_id": 1,
+            "notification_message": "something@else.com wants to be friends with you",
+            "action": "friend request",
+            "created_at": 1489580720,
+            "notified_user": {
+              "id": 2,
+              "email": "something@else.com"
+            }
+          }
+        ]
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/notifications",
+      "versions": [
+        "1"
+      ],
+      "query": "",
+      "request_data": null,
+      "response_data": {
+        "message": "Token is missing from header"
+      },
+      "code": "401",
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "users#show": [
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/1",
+      "versions": [
+        "1"
+      ],
+      "query": "",
+      "request_data": null,
+      "response_data": {
+        "user": {
+          "id": 1,
+          "email": "test@test.com",
+          "auth_token": null,
+          "has_notifications": true
+        }
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    },
+    {
+      "verb": "GET",
+      "path": "/api/v1/users/1",
+      "versions": [
+        "1"
+      ],
+      "query": "",
+      "request_data": null,
+      "response_data": {
+        "message": "Token is missing from header"
+      },
+      "code": "401",
+      "show_in_doc": 0,
+      "recorded": true
+    }
+  ],
+  "users#update": [
+    {
+      "verb": "POST",
+      "path": "/api/v1/users/1",
+      "versions": [
+        "1"
+      ],
+      "query": null,
+      "request_data": {
+        "email": "halcyon@halcyon.com",
+        "has_notifications": "false",
+        "old_email": "test@test.com",
+        "old_password": "12345678",
+        "password": "87654321"
+      },
+      "response_data": {
+        "user": {
+          "id": 1,
+          "email": "halcyon@halcyon.com",
+          "auth_token": null,
+          "has_notifications": false
+        }
+      },
+      "code": "200",
+      "show_in_doc": 1,
+      "recorded": true
+    }
+  ]
+}
