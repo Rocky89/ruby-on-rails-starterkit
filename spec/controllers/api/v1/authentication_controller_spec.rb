@@ -15,18 +15,18 @@ RSpec.describe Api::V1::AuthenticationController, type: :controller do
       expect(response).to have_http_status(400)
     end
     it 'Missing password parameter' do
-      post :sign_up, params: { email: 'norbert@forman.com' }
+      post :sign_up, params: { email: 'tester@test.com' }
       expect(response).to have_http_status(400)
     end
     it 'Valid parameters - create user' do
-      post :sign_up, params: { email: 'norbert@forman.com', password: '12345678' }
+      post :sign_up, params: { email: 'tester@test.com', password: '12345678' }
       expect(response).to have_http_status(200)
       body = JSON.parse(response.body)
-      expect(body['user'].keys).to contain_exactly('id', 'email', 'auth_token')
+      expect(body['user'].keys).to contain_exactly('id', 'email', 'auth_token', 'has_notifications')
     end
     it 'Valid parameters - duplicate email' do
       create(:user)
-      post :sign_up, params: { email: 'norbert@forman.com', password: '12345678' }
+      post :sign_up, params: { email: 'test@test.com', password: '12345678' }
       expect(response).to have_http_status(422)
     end
   end
@@ -41,24 +41,24 @@ RSpec.describe Api::V1::AuthenticationController, type: :controller do
       expect(response).to have_http_status(400)
     end
     it 'Missing password parameter' do
-      post :sign_in, params: { email: 'norbert@forman.com' }
+      post :sign_in, params: { email: 'tester@test.com' }
       expect(response).to have_http_status(400)
     end
     it 'Valid parameters - user sign in' do
       create(:user)
-      post :sign_in, params: { email: 'norbert@forman.com', password: '12345678' }
+      post :sign_in, params: { email: 'test@test.com', password: '12345678' }
       expect(response).to have_http_status(200)
       body = JSON.parse(response.body)
-      expect(body['user'].keys).to contain_exactly('id', 'email', 'auth_token')
+      expect(body['user'].keys).to contain_exactly('id', 'email', 'auth_token', 'has_notifications')
     end
     it 'Valid parameters - invalid email' do
       create(:user)
-      post :sign_in, params: { email: 'n@f.com', password: '12345678' }
+      post :sign_in, params: { email: 'e@c.com', password: '12345678' }
       expect(response).to have_http_status(404)
     end
     it 'Valid parameters - invalid password' do
       create(:user)
-      post :sign_in, params: { email: 'norbert@forman.com', password: '123' }
+      post :sign_in, params: { email: 'test@test.com', password: '123' }
       expect(response).to have_http_status(422)
     end
   end
@@ -69,12 +69,12 @@ RSpec.describe Api::V1::AuthenticationController, type: :controller do
     end
     it 'Valid parameters - invalid email' do
       create(:user)
-      post :forgot_password, params: { email: 'n@f.com' }
+      post :forgot_password, params: { email: 'e@c.com' }
       expect(response).to have_http_status(404)
     end
     it 'Valid parameters - valid email' do
       create(:user)
-      post :forgot_password, params: { email: 'norbert@forman.com' }
+      post :forgot_password, params: { email: 'test@test.com' }
       expect(response).to have_http_status(200)
     end
   end

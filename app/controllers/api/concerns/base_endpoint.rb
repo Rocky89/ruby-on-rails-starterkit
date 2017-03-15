@@ -61,7 +61,6 @@ module Api
           define_method(:update) do
             authorize_target_class(:update)
             data_to_render = opts[:target_class].where(json_api_select_filters).find(params[:id])
-            raise Errors::NotFound unless data_to_render.present?
             raise Errors::UnprocessableEntity, data_to_render.errors.full_messages.to_sentence \
               unless data_to_render.update(permited_params)
             data_to_render.reload
@@ -73,7 +72,6 @@ module Api
           define_method(:destroy) do
             authorize_target_class(:destroy)
             data_to_render = opts[:target_class].where(json_api_select_filters).find(params[:id])
-            raise Errors::NotFound unless data_to_render.present?
             data_to_render.destroy
             render plain: '', status: 204
           end
@@ -89,14 +87,12 @@ module Api
       end
 
       def render_json_api_response(data_to_render)
-        custom_serializer_adapter = load_custom_serializer[:adapter]
         render json_api_serializer_options_for(data_to_render)
-          .merge(include: json_api_serializer_include, json: data_to_render, scope: { current_user: current_user },
-                 adapter: custom_serializer_adapter || opts[:serializer_adapter])
+          .merge(include: json_api_serializer_include, json: data_to_render, scope: { current_user: current_user })
       end
 
       def json_api_serializer_options_for(data_to_render)
-        custom_serializer = load_custom_serializer[:serializer]
+        custom_serializer = json_api_run_serializers[params[:action].to_sym]
         return {} if custom_serializer == false
         key_name = data_to_render.respond_to?(:each) ? :each_serializer : :serializer
         { key_name => custom_serializer || opts[:serializer] }
@@ -120,15 +116,23 @@ module Api
         render_json_api_response(data_to_render)
       end
 
-      def load_custom_serializer
-        json_api_run_serializers[params[:action].to_sym] || {}
-      end
-
       def load_read_data(opts)
-        data_to_render = opts[:target_class].where(json_api_select_filters)
+        # data_to_render = opts[:target_class].where(json_api_select_filters)
+        data_to_render = load_read_data_filter(opts)
         ar_include = opts[:ar_include]
         return data_to_render.includes(ar_include) if ar_include.present?
         data_to_render
+      end
+
+      def load_read_data_filter(opts)
+        target_class = opts[:target_class]
+        if json_api_select_filters.present?
+          key = json_api_select_filters.keys.first
+          value = "#{key.to_s.gsub('_id', '$').capitalize}#{json_api_select_filters.values.first}"
+          target_class.or(json_api_select_filters, key => value)
+        else
+          target_class.where(json_api_select_filters)
+        end
       end
 
       def load_custom_date(method_name, current_user, params)

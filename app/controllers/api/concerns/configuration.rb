@@ -9,7 +9,6 @@ module Api
         target_class: nil,
         ar_include: nil,
         serializer: nil,
-        serializer_adapter: :json, # attributes, json, json_api
         custom_serializers: -> { {} },
         custom_services: -> { {} },
         updateable_params: [],
@@ -22,6 +21,31 @@ module Api
           opts[:methods] = methods
           methods.each do |endpoint|
             DEFAULT_ENDPOINTS.include?(endpoint) ? send("define_#{endpoint}") : define_custom(endpoint)
+          end
+        end
+
+        # set the custom methods of the controller
+        def json_api_custom_methods(*custom_methods)
+          opts[:custom_methods] = custom_methods
+          custom_methods.each do |method_name|
+            define_method(method_name) do
+              if opts[:target_class].instance_of? Class
+                authorize! method_name, opts[:target_class]
+              else
+                authorize! method_name, opts[:target_class].klass
+              end
+              service = json_api_run_services[method_name][:service]
+              data_to_render = if json_api_run_services[method_name][:params] == true && json_api_run_services[method_name][:current_user] == true
+                                 service.new(current_user, params).run
+                               elsif json_api_run_services[method_name][:params] == true
+                                 service.new(params).run
+                               elsif json_api_run_services[method_name][:current_user] == true
+                                 service.new(current_user).run
+                               else
+                                 service.new.run
+                               end
+              render_json_api_response(data_to_render)
+            end
           end
         end
 

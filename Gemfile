@@ -54,6 +54,8 @@ gem 'cancancan'
 gem 'jwt'
 # DSL and Rails engine for documenting your RESTful API
 gem 'apipie-rails'
+# a gem for various push notification services.
+gem 'pushmeup'
 
 source 'https://rails-assets.org' do
   # JavaScript library for efficiently making an absolutely positioned element

@@ -1,6 +1,6 @@
 Rails.application.configure do
   ENV['TOKEN_SECRET'] = 'WFpbCI6Im5Abi5'
-
+  ENV['GCM_KEY'] = 'WFpbCI6Im5Abi5'
   # Settings specified here will take precedence over those in
   # config/application.rb.
 
@@ -58,4 +58,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.delivery_method = :letter_opener
+  config.base_url = 'http://localhost:3000'
 end
